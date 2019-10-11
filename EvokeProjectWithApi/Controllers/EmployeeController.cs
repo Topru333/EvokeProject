@@ -1,4 +1,5 @@
 ﻿using EvokeProjectWithApi.Models;
+using EvokeProjectWithApi.Models.DataAccessLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,14 @@ namespace EvokeProjectWithApi.Controllers {
     public class EmployeeController : ApiController {
         // GET api/Employee
         public IEnumerable<DecaratedMan> Get () {
-            using (CompanyEntities context = new CompanyEntities()) {
+            using (CompanyContext context = new CompanyContext()) {
                 ManSortStrategy manSortStrategy = null;
                 if (new Random().Next(0, 2) == 0) {
                     manSortStrategy = new SortByName();
                 } else {
                     manSortStrategy = new SortByAge();
                 }
-                var data = context.Employee.Select(c => new { c.Name, c.Age, c.Email, c.Phone });
+                var data = context.Employees.ToList();
                 List<DecaratedMan> people = new List<DecaratedMan>();
                 foreach (var employee in data) {
                     Man.Builder builder = new Man.Builder()
