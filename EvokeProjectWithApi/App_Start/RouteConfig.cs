@@ -23,8 +23,8 @@ namespace EvokeProjectWithApi {
                 name: "Employees",
                 url: "Employees",
                 defaults: new {
-                    controller = "default",
-                    action = "Redirect"
+                    controller = "Home",
+                    action = "Index"
                 }
             );
 
@@ -32,8 +32,8 @@ namespace EvokeProjectWithApi {
                 name: "Candidates",
                 url: "Candidates",
                 defaults: new {
-                    controller = "default",
-                    action = "Redirect"
+                    controller = "Home",
+                    action = "Index"
                 }
             );
         }
